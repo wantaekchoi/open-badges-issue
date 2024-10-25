@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PaymentModule } from './payment/payment.module';
-import { MintModule } from './mint/mint.module';
-import { OrderModule } from './order/order.module';
+import { CqrsModule } from '@nestjs/cqrs';
+import { ConfigModule } from '@nestjs/config';
+import { BadgesModule } from './badges';
+import { DatabaseModule } from './infra';
 
 @Module({
-  imports: [PaymentModule, MintModule, OrderModule],
+  imports: [ConfigModule, DatabaseModule, CqrsModule, BadgesModule],
   controllers: [AppController],
   providers: [AppService],
 })
